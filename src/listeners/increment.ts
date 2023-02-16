@@ -1,8 +1,6 @@
-'use strict'
+import * as apiService from '../services/api';
 
-const apiService = require("../services/api");
-
-module.exports = async (props, event, api) => {
+export default async function(props, event, api) {
 
     let res = await apiService.getDoc(api, "counter", props.id);
     let counter = res.data

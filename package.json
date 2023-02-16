@@ -1,18 +1,24 @@
 {
-  "name": "javascript-template",
+  "name": "typescript-template",
   "version": "1.0.0",
-  "description": "Lenra's javascript template",
-  "main": "index.js",
+  "description": "Lenra's TypeScript template",
+  "main": "dist/server.js",
   "scripts": {
+    "genBuild": "tsc build.ts src/listeners/* src/views/* --outDir tmp",
+    "index": "npm run genBuild && node tmp/build.js",
+    "build": "npm run index && tsc",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "keywords": [],
   "author": "Lenra",
   "license": "MIT",
   "dependencies": {
-    "@lenra/components": "^1.0.0-beta.3",
+    "@lenra/components": "^1.0.0-beta.4",
     "axios": "^0.27.1",
-    "express": "^4.18.1",
-    "morgan": "^1.10.0"
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.13.0",
+    "typescript": "^4.9.5"
   }
 }

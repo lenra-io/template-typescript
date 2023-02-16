@@ -1,13 +1,18 @@
 componentsApi: "1.0"
 generator:
   dofigen:
+    builders:
+      - name: builder
+        from: "docker.io/bitnami/node:16"
+        adds:
+          - .
+        script:
+          - npm i
     from: "docker.io/bitnami/node:16"
     workdir: /app
     root:
       script:
         - chown -R 1000 /app
-    adds:
-      - .
     script:
       - npm i --omit=dev
     cmd:
