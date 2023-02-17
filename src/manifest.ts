@@ -1,1 +1,1 @@
-export const mainView = "main";
+export const rootView = "main";

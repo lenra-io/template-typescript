@@ -4,20 +4,32 @@ generator:
     builders:
       - name: builder
         from: "docker.io/bitnami/node:16"
+        workdir: /tmp/app
         adds:
           - .
         script:
           - npm i
+          - npm run build
+      - name: module-loader
+        from: "docker.io/bitnami/node:16"
+        workdir: /tmp/module
+        adds:
+          - package.json
+          - package-lock.json
+        script:
+          - npm i --production
     from: "docker.io/bitnami/node:16"
     workdir: /app
-    root:
-      script:
-        - chown -R 1000 /app
-    script:
-      - npm i --omit=dev
+    artifacts:
+      - builder: module-loader
+        source: "/tmp/module/"
+        destination: "/app/"
+      - builder: builder
+        source: "/tmp/app/dist/"
+        destination: "/app/dist/"
     cmd:
-      - node
-      - server.js
+      - npm
+      - start
     ports:
       - 3000
     envs:
@@ -30,9 +42,5 @@ generator:
     ignores:
       - "**"
       - "!/*.json"
-      - "!/server.js"
-      - "!/index.js"
-      - "!/listeners/"
-      - "!/resources/"
-      - "!/services/"
-      - "!/views/"
+      - "!/build.ts"
+      - "!/src/"

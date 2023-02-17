@@ -5,6 +5,7 @@
     "declaration": true,
     "outDir": "./dist",
     "experimentalDecorators": true,
+    "sourceMap": true,
     "types": ["node"],
     "plugins": [
       {

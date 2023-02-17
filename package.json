@@ -7,6 +7,7 @@
     "genBuild": "tsc build.ts src/listeners/* src/views/* --outDir tmp",
     "index": "npm run genBuild && node tmp/build.js",
     "build": "npm run index && tsc",
+    "start": "node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "keywords": [],
