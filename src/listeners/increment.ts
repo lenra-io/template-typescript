@@ -1,10 +1,10 @@
-import * as apiService from '../services/api';
+import { Api } from '../classes/Api';
+import { Counter } from '../classes/Counter';
+import { event, props } from '../classes/types';
 
-export default async function(props, event, api) {
-
-    let res = await apiService.getDoc(api, "counter", props.id);
-    let counter = res.data
+export default async function (props: props, _event: event, api: Api) {
+    let counter = await api.getDoc(Counter, props.id);
     counter.count += 1;
-    await apiService.updateDoc(api, "counter", counter);
+    await api.updateDoc(counter);
     return {};
 }

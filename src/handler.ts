@@ -2,6 +2,8 @@ import * as manifest from './manifest';
 import { getListener, getView } from './index.gen';
 import path = require('path');
 import { existsSync } from 'fs';
+import { Api, requestApi } from './classes/Api';
+import { data, props } from './classes/types';
 
 const RESOURCE_TYPE = "resource";
 const LISTENER_TYPE = "action";
@@ -14,8 +16,8 @@ const TYPES = [
     VIEW_TYPE
 ];
 
-type ViewBody = { view: string, data, props };
-type ListenerBody = { action: string, props, event, api };
+type ViewBody = { view: string, data: data, props: props };
+type ListenerBody = { action: string, props: props, event: Event, api: requestApi };
 type ResourceBody = { resource: string };
 
 const RESOURCES_PATH = "./resources/";
@@ -42,12 +44,12 @@ function handleManifest() {
 
 async function handleView({ view, data, props }) {
     const fx = await getView(view);
-    return fx(data, props);
+    return fx(data || [], props || {});
 }
 
 async function handleListener({ action, props, event, api }) {
     const fx = await getListener(action);
-    return fx(props, event, api);
+    return fx(props || {}, event || {}, new Api(api));
 }
 
 async function handleResource({ resource }) {

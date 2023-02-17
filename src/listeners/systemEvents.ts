@@ -1,47 +1,41 @@
-import * as apiService from '../services/api';
+import { Api } from '../classes/Api';
+import { Counter } from '../classes/Counter';
+import { event, props } from '../classes/types';
 
-export async function onEnvStart(props, event, api) {
+export async function onEnvStart(_props: props, _event: event, api: Api) {
     console.log("onEnvStart");
-    let res = await apiService.executeQuery(api, "counter", {
+    let counters = await api.executeQuery(Counter, {
         "user": "global"
     })
 
-    let counters = res.data;
     if (counters.length == 0) {
-        await apiService.createDoc(api, "counter", {
-            "count": 0,
-            "user": "global"
-        });
+        await api.createDoc(new Counter(0, "global"));
     }
 }
 
-export async function onUserFirstJoin(props, event, api) {
+export async function onUserFirstJoin(_props: props, _event: event, api: Api) {
     console.log("onUserFirstJoin");
-    let res = await apiService.executeQuery(api, "counter", {
+    let counters = await api.executeQuery(Counter, {
         "user": "@me"
     })
 
-    let counters = res.data;
     if (counters.length == 0) {
-        await apiService.createDoc(api, "counter", {
-            "user": "@me",
-            "count": 0,
-        })
+        await api.createDoc(new Counter(0, "@me"));
     }
 }
 
-export async function onSessionStart(props, event, api) {
+export async function onSessionStart(_props: props, _event: event, api: Api) {
 
 }
 
-export async function onSessionStop(props, event, api) {
+export async function onSessionStop(_props: props, _event: event, api: Api) {
 
 }
 
-export async function onUserLeave(props, event, api) {
-    
+export async function onUserLeave(_props: props, _event: event, api: Api) {
+
 }
 
-export async function onEnvStop(props, event, api) {
+export async function onEnvStop(_props: props, _event: event, api: Api) {
 
 }
