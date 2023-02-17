@@ -1,18 +1,38 @@
 componentsApi: "1.0"
 generator:
   dofigen:
+    builders:
+      - name: builder
+        from: "docker.io/bitnami/node:16"
+        workdir: /tmp/app
+        adds:
+          - .
+        script:
+          - npm i
+          - npm run build
+      - name: module-loader
+        from: "docker.io/bitnami/node:16"
+        workdir: /tmp/module
+        adds:
+          - package.json
+          - package-lock.json
+        script:
+          - npm i --production
     from: "docker.io/bitnami/node:16"
     workdir: /app
-    root:
-      script:
-        - chown -R 1000 /app
-    adds:
-      - .
-    script:
-      - npm i --omit=dev
+    artifacts:
+      - builder: module-loader
+        source: "/tmp/module/"
+        destination: "/app/"
+      - builder: builder
+        source: "/tmp/app/dist/"
+        destination: "/app/dist/"
+      - builder: builder
+        source: "/tmp/app/resources/"
+        destination: "/app/resources/"
     cmd:
-      - node
-      - server.js
+      - npm
+      - start
     ports:
       - 3000
     envs:
@@ -25,9 +45,9 @@ generator:
     ignores:
       - "**"
       - "!/*.json"
-      - "!/server.js"
-      - "!/index.js"
-      - "!/listeners/"
+      - "!/build.ts"
+      - "!/src/"
       - "!/resources/"
-      - "!/services/"
-      - "!/views/"
+dev:
+  devtool:
+    tag: 1.0.0-beta.79

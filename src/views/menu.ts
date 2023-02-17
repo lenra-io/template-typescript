@@ -1,10 +1,9 @@
-'use strict'
+import { Container, Flex, colors, padding, Image, Flexible, Text, Component, IComponent } from '@lenra/components'
+import { data, props } from '../classes/types'
 
-const { Container, Flex, colors, padding, Image, Flexible, Text } = require("@lenra/components")
-
-module.exports = (_data, _props) => {
+export default function (_data: data, _props: props): Component<IComponent> | IComponent {
   return Container(
-    Flex(
+    Flex([
       Container(
         Image("logo.png")
       )
@@ -20,7 +19,7 @@ module.exports = (_data, _props) => {
             })
         )
       )
-    )
+    ])
       .fillParent(true)
       .mainAxisAlignment("spaceBetween")
       .crossAxisAlignment("center")
