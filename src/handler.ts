@@ -4,7 +4,7 @@ import path = require('path');
 import { existsSync } from 'fs';
 
 const RESOURCE_TYPE = "resource";
-const LISTENER_TYPE = "listener";
+const LISTENER_TYPE = "action";
 const VIEW_TYPE = "view";
 const MANIFEST_TYPE = "manifest";
 
@@ -21,6 +21,7 @@ type ResourceBody = { resource: string };
 const RESOURCES_PATH = "./resources/";
 
 export async function handleRequest(body: object) {
+    console.log("handleRequest", body);
     const type = TYPES.find(type => type in body) || MANIFEST_TYPE;
     switch (type) {
         case RESOURCE_TYPE:
@@ -32,7 +33,7 @@ export async function handleRequest(body: object) {
         case MANIFEST_TYPE:
             return handleManifest();
         default:
-            throw new Error(`Unknown middleware type '${type}'.`);
+            throw new Error(`Unknown request type '${type}'.`);
     }
 }
 

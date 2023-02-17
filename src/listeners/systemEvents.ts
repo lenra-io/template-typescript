@@ -1,6 +1,7 @@
 import * as apiService from '../services/api';
 
 export async function onEnvStart(props, event, api) {
+    console.log("onEnvStart");
     let res = await apiService.executeQuery(api, "counter", {
         "user": "global"
     })
@@ -15,6 +16,7 @@ export async function onEnvStart(props, event, api) {
 }
 
 export async function onUserFirstJoin(props, event, api) {
+    console.log("onUserFirstJoin");
     let res = await apiService.executeQuery(api, "counter", {
         "user": "@me"
     })

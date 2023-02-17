@@ -44,3 +44,6 @@ generator:
       - "!/*.json"
       - "!/build.ts"
       - "!/src/"
+dev:
+  devtool:
+    tag: v1.0.0-beta.79
