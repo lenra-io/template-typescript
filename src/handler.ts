@@ -21,7 +21,6 @@ type ResourceBody = { resource: string };
 const RESOURCES_PATH = "./resources/";
 
 export async function handleRequest(body: object) {
-    console.log("handleRequest", body);
     const type = TYPES.find(type => type in body) || MANIFEST_TYPE;
     switch (type) {
         case RESOURCE_TYPE:

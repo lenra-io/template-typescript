@@ -27,6 +27,9 @@ generator:
       - builder: builder
         source: "/tmp/app/dist/"
         destination: "/app/dist/"
+      - builder: builder
+        source: "/tmp/app/resources/"
+        destination: "/app/resources/"
     cmd:
       - npm
       - start
@@ -44,6 +47,7 @@ generator:
       - "!/*.json"
       - "!/build.ts"
       - "!/src/"
+      - "!/resources/"
 dev:
   devtool:
-    tag: v1.0.0-beta.79
+    tag: 1.0.0-beta.79
