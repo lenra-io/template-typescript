@@ -2,23 +2,27 @@ componentsApi: "1.0"
 generator:
   dofigen:
     builders:
-      - name: builder
-        from: "docker.io/bitnami/node:16"
-        workdir: /tmp/app
-        adds:
-          - .
-        script:
-          - npm i
-          - npm run build
       - name: module-loader
-        from: "docker.io/bitnami/node:16"
+        from: &image "docker.io/bitnami/node:18"
         workdir: /tmp/module
         adds:
           - package.json
           - package-lock.json
         script:
-          - npm i --production
-    from: "docker.io/bitnami/node:16"
+          - npm i --production  --cache /tmp/cache
+        caches:
+          - /tmp/cache
+      - name: builder
+        from: *image
+        workdir: /tmp/app
+        adds:
+          - .
+        script:
+          - npm i --cache /tmp/cache
+          - npm run build
+        caches:
+          - /tmp/cache
+    from: *image
     workdir: /app
     artifacts:
       - builder: module-loader
@@ -45,7 +49,6 @@ generator:
     ignores:
       - "**"
       - "!/*.json"
-      - "!/build.ts"
       - "!/src/"
       - "!/resources/"
 dev:

@@ -78,7 +78,7 @@ async function indexViews() {
 
 async function writeIndexFile([listeners, views]) {
     return fs.writeFile("src/index.gen.ts",
-        `import { View, Listener } from "./classes/callback";
+        `import { View, Listener } from "./classes/types";
 
 const listenersCache = ${JSON.stringify(listeners)};
 export async function getListener(name): Promise<Listener> {

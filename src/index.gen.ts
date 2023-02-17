@@ -1,4 +1,4 @@
-import { View, Listener } from "./classes/callback";
+import { View, Listener } from "./classes/types";
 
 const listenersCache = {"increment":{"module":"./listeners/increment","key":"default"},"onEnvStart":{"module":"./listeners/systemEvents","key":"onEnvStart"},"onUserFirstJoin":{"module":"./listeners/systemEvents","key":"onUserFirstJoin"},"onSessionStart":{"module":"./listeners/systemEvents","key":"onSessionStart"},"onSessionStop":{"module":"./listeners/systemEvents","key":"onSessionStop"},"onUserLeave":{"module":"./listeners/systemEvents","key":"onUserLeave"},"onEnvStop":{"module":"./listeners/systemEvents","key":"onEnvStop"}};
 export async function getListener(name): Promise<Listener> {

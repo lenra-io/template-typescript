@@ -60,6 +60,14 @@ You can then access the application by opening [`localhost:4000`](http://localho
 
 This template is a basic implementation of a Lenra application using the TypeScript language. You can get your application started by using this template.
 
+You can easely add views and listeners by adding new files to the corresponding source directories.
+You can then regenerate the [index file](./src/index.gen.ts) with the next command:
+
+```bash
+npm i
+npm run index
+```
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
