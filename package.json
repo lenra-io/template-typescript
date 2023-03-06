@@ -4,7 +4,7 @@
   "description": "Lenra's TypeScript template",
   "main": "dist/server.js",
   "scripts": {
-    "genBuild": "tsc build.ts src/listeners/* src/views/* --target es2022 --outDir tmp",
+    "genBuild": "tsc build.ts src/listeners/* src/views/* --module commonjs  --target es2022 --outDir tmp",
     "index": "npm run genBuild && node tmp/build.js",
     "build": "tsc",
     "start": "node dist/server.js",

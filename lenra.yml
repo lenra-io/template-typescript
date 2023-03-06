@@ -51,6 +51,3 @@ generator:
       - "!/*.json"
       - "!/src/"
       - "!/resources/"
-dev:
-  devtool:
-    tag: 1.0.0-beta.79
