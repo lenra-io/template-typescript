@@ -1,6 +1,5 @@
-import { Api } from '../classes/Api';
-import { Counter } from '../classes/Counter';
-import { event, props } from '../classes/types';
+import { Api, event, props } from '@lenra/app-server';
+import { Counter } from '../classes/Counter.js';
 
 export async function onEnvStart(_props: props, _event: event, api: Api) {
     console.log("onEnvStart");

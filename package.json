@@ -3,23 +3,27 @@
   "version": "1.0.0",
   "description": "Lenra's TypeScript template",
   "main": "dist/server.js",
+  "type": "module",
   "scripts": {
-    "genBuild": "tsc build.ts src/listeners/* src/views/* --module commonjs  --target es2022 --outDir tmp",
-    "index": "npm run genBuild && node tmp/build.js",
+    "start": "app-lenra",
+    "index": "npm run build && app-lenra index",
     "build": "tsc",
-    "start": "node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "keywords": [],
   "author": "Lenra",
   "license": "MIT",
   "dependencies": {
-    "@lenra/components": "^1.0.0-beta.4",
-    "axios": "^0.27.1",
-    "express": "^4.18.1"
+    "@lenra/app-server": "^1.0.0-alpha.3",
+    "@lenra/components": "^1.0.0-beta.4"
   },
   "devDependencies": {
     "@types/node": "^18.13.0",
     "typescript": "^4.9.5"
+  },
+  "app-lenra": {
+    "indexer": "ts",
+    "resources": "../resources",
+    "dist": "dist"
   }
 }

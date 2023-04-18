@@ -1,6 +1,6 @@
+import { data, props } from "@lenra/app-server"
 import { Component, Flex, IComponent, View } from "@lenra/components"
-import { data, props } from "../classes/types"
-import { views } from "../index.gen"
+import { views } from "../index.gen.js"
 
 
 export default function (_data: data, _props: props): Component<IComponent> | IComponent {
