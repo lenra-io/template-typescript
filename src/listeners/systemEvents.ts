@@ -3,23 +3,23 @@ import { Counter } from '../classes/Counter.js';
 
 export async function onEnvStart(_props: props, _event: event, api: Api) {
     console.log("onEnvStart");
-    let counters = await api.executeQuery(Counter, {
+    let counters = await api.data.find(Counter, {
         "user": "global"
     })
 
     if (counters.length == 0) {
-        await api.createDoc(new Counter(0, "global"));
+        await api.data.createDoc(new Counter(0, "global"));
     }
 }
 
 export async function onUserFirstJoin(_props: props, _event: event, api: Api) {
     console.log("onUserFirstJoin");
-    let counters = await api.executeQuery(Counter, {
+    let counters = await api.data.find(Counter, {
         "user": "@me"
     })
 
     if (counters.length == 0) {
-        await api.createDoc(new Counter(0, "@me"));
+        await api.data.createDoc(new Counter(0, "@me"));
     }
 }
 
