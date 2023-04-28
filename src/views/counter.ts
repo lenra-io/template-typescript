@@ -1,6 +1,6 @@
 import { Flex, Text, Button, Component, IComponent } from '@lenra/components';
-import { Counter } from '../classes/Counter';
-import { listeners } from '../index.gen';
+import { Counter } from '../classes/Counter.js';
+import { listeners } from '../index.gen.js';
 
 export default function (counters: Counter[], { text }): Component<IComponent> | IComponent {
   const counter = counters[0];

@@ -1,4 +1,4 @@
-import { Data } from "./Data";
+import { Data } from "@lenra/app-server";
 
 export class Counter extends Data {
     count: number
