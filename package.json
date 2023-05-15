@@ -15,7 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "@lenra/app-server": "^1.0.0-beta.1",
-    "@lenra/components": "^1.0.0-beta.5"
+    "@lenra/components": "^1.0.0-beta.7"
   },
   "devDependencies": {
     "@types/node": "^18.13.0",
