@@ -47,6 +47,3 @@ generator:
       - "!/*.json"
       - "!/src/"
       - "!/resources/"
-dev:
-  devtool:
-    tag: local
