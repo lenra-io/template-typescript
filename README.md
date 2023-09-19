@@ -32,7 +32,6 @@
 
 
 
-
 <!-- GETTING STARTED -->
 
 ## Prerequisites
@@ -46,27 +45,33 @@ Installation instructions can be found here https://github.com/lenra-io/lenra_cl
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-To run the TypeScript template you first need to build the application.
+To have IDE auto-completion, you will have to install the dependencies of the project. To do so, run the following command:
+
 ```console
-lenra build
+npm install
 ```
 
-Then you can start it.
+You can index the views and listeners of your application to have more auto-completion:
 ```console
-lenra start
-```
-
-You can then access the application by opening [`localhost:4000`](http://localhost:4000) on your web browser. 
-
-This template is a basic implementation of a Lenra application using the TypeScript language. You can get your application started by using this template.
-
-You can easely add views and listeners by adding new files to the corresponding source directories.
-You can then regenerate the [index file](./src/index.gen.ts) with the next command:
-
-```bash
-npm i
+npm run build
 npm run index
 ```
+
+
+To start the TypeScript template just run:
+
+```console
+lenra dev
+```
+
+### Classique client
+
+You can use one of the client libs to create a custom client for your application.
+You can find the client libs here: https://github.com/search?q=topic%3Alenra+topic%3Aclient+topic%3Alib&sort=stargazers&type=repositories
+
+### Lenra client (beta)
+
+You can then access the application by opening [`localhost:4000`](http://localhost:4000) on your web browser. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

@@ -1,7 +1,6 @@
-import { data, props } from '@lenra/app-server'
-import { Container, Flex, colors, padding, Image, Flexible, Text, Component, IComponent } from '@lenra/components'
+import { ViewRequest, Container, Flex, colors, padding, Image, Flexible, Text, Component, IComponent } from '@lenra/app'
 
-export default function (_data: data, _props: props): Component<IComponent> | IComponent {
+export default function (_data: ViewRequest['data'], _props: ViewRequest['props']): Component<IComponent> | IComponent {
   return Container(
     Flex([
       Container(
