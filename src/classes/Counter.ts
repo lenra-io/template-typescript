@@ -1,12 +1,12 @@
-import { Data } from "@lenra/app-server";
+import { Data } from "@lenra/app";
 
 export class Counter extends Data {
-    count: number
     user: string
+    count: number
 
-    constructor(count: number, user: string) {
+    constructor(user: string, count: number) {
         super();
-        this.count = count;
         this.user = user;
+        this.count = count;
     }
 }

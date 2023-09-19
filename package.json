@@ -5,8 +5,8 @@
   "main": "dist/server.js",
   "type": "module",
   "scripts": {
-    "start": "app-lenra",
-    "index": "npm run build && app-lenra index",
+    "start": "node node_modules/@lenra/app/dist/bin/app-lenra.js start",
+    "index": "node node_modules/@lenra/app/dist/bin/app-lenra.js index",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
@@ -14,8 +14,7 @@
   "author": "Lenra",
   "license": "MIT",
   "dependencies": {
-    "@lenra/app-server": "^1.0.0-beta.1",
-    "@lenra/components": "^1.0.0-beta.5"
+    "@lenra/app": "^1.0.0-beta.14"
   },
   "devDependencies": {
     "@types/node": "^18.13.0",

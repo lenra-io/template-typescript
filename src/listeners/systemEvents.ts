@@ -1,40 +1,34 @@
-import { Api, event, props } from '@lenra/app-server';
+import { Api, ListenerRequest } from '@lenra/app';
 import { Counter } from '../classes/Counter.js';
 
-export async function onEnvStart(_props: props, _event: event, api: Api) {
-    console.log("onEnvStart");
-    let counters = await api.data.find(Counter, {
-        "user": "global"
-    })
+export async function onEnvStart(_props: ListenerRequest['props'], _event: ListenerRequest['event'], api: Api) {
+    await createCounter(api, "global");
+}
 
+export async function onUserFirstJoin(_props: ListenerRequest['props'], _event: ListenerRequest['event'], api: Api) {
+    await createCounter(api, "@me");
+}
+
+export async function onSessionStart(_props: ListenerRequest['props'], _event: ListenerRequest['event'], api: Api) {
+
+}
+
+export async function onSessionStop(_props: ListenerRequest['props'], _event: ListenerRequest['event'], api: Api) {
+
+}
+
+export async function onUserLeave(_props: ListenerRequest['props'], _event: ListenerRequest['event'], api: Api) {
+
+}
+
+export async function onEnvStop(_props: ListenerRequest['props'], _event: ListenerRequest['event'], api: Api) {
+
+}
+
+async function createCounter(api: Api, user: string) {
+    const counterColl = api.data.coll(Counter);
+    let counters = await counterColl.find({ user })
     if (counters.length == 0) {
-        await api.data.createDoc(new Counter(0, "global"));
+        await counterColl.createDoc(new Counter(user, 0))
     }
-}
-
-export async function onUserFirstJoin(_props: props, _event: event, api: Api) {
-    console.log("onUserFirstJoin");
-    let counters = await api.data.find(Counter, {
-        "user": "@me"
-    })
-
-    if (counters.length == 0) {
-        await api.data.createDoc(new Counter(0, "@me"));
-    }
-}
-
-export async function onSessionStart(_props: props, _event: event, api: Api) {
-
-}
-
-export async function onSessionStop(_props: props, _event: event, api: Api) {
-
-}
-
-export async function onUserLeave(_props: props, _event: event, api: Api) {
-
-}
-
-export async function onEnvStop(_props: props, _event: event, api: Api) {
-
 }

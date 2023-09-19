@@ -19,6 +19,7 @@ generator:
           - .
         script:
           - npm i --cache /tmp/cache
+          - cat node_modules/@lenra/app/dist/lib/gen/names.d.ts
           - npm run build
         caches:
           - /tmp/cache
@@ -35,8 +36,8 @@ generator:
         source: "/tmp/app/resources/"
         destination: "/app/resources/"
     cmd:
-      - node
-      - node_modules/@lenra/app-server/dist/bin/app-lenra.js
+      - npm
+      - start
     ports:
       - 3000
     envs:
