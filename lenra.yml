@@ -36,7 +36,8 @@ generator:
         source: "/tmp/app/resources/"
         destination: "/app/resources/"
     cmd:
-      - npm
+      - node
+      - node_modules/@lenra/app/dist/bin/app-lenra.js
       - start
     ports:
       - 3000
