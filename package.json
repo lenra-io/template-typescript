@@ -17,7 +17,7 @@
     "@lenra/app": "^1"
   },
   "devDependencies": {
-    "@types/node": "^18.13.0",
+    "@types/node": "^20.4.4",
     "typescript": "^4.9.5"
   },
   "app-lenra": {
